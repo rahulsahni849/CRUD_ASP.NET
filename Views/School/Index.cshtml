@@ -1,0 +1,241 @@
+﻿@using crud_app.Models
+
+
+@{
+    @model crud_app.Models.SchoolModel
+    ViewBag.Title = "View";
+}
+<div class="container">
+    @*<h2>School Data</h2>*@
+    <div class="col">
+        <div class="row">
+            @*for creating*@
+            <h4><b>Add Class</b></h4>
+            <hr style="height: 4px; border-width: 0; background-color: #0366fc " />
+            <div>
+                @if (TempData["edit"] == null)
+                {
+                    <h4><b>Creating Form</b></h4>
+                    using (Html.BeginForm("Create", "School", FormMethod.Post))
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <div class="form">
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="row">
+                                                    @Html.LabelFor(model => model.school_name, "School", htmlAttributes: new { @class = "control-label" })
+                                                </div>
+                                                <div class="row p-2">
+                                                    @Html.EditorFor(model => model.school_name, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.school_name, "", new { @class = "text-danger" })
+                                                </div>
+
+                                            </div>
+                                            <div class="col-md-3 ">
+                                                <div class="row">
+                                                    @Html.LabelFor(model => model.class_name, "Class/Course Name", htmlAttributes: new { @class = "control-label" })
+                                                </div>
+                                                <div class="row p-2">
+                                                    @Html.EditorFor(model => model.class_name, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.class_name, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-3">
+                                                <div class="row">
+                                                    @Html.LabelFor(model => model.order_no, "Display Order No", htmlAttributes: new { @class = "control-label" })
+                                                </div>
+                                                <div class="row p-2">
+                                                    @Html.EditorFor(model => model.order_no, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.order_no, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="row">
+                                                    @Html.LabelFor(model => model.no_of_year, "No Of Year", htmlAttributes: new { @class = "control-label" })
+                                                </div>
+                                                <div class="row p-2">
+                                                    @Html.EditorFor(model => model.no_of_year, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.no_of_year, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 d-flex justify-content-start align-items-center ">
+                                                <div class="row mt-4">
+                                                    <div class="col">
+                                                        @Html.LabelFor(model => model.show, "Show On Website", htmlAttributes: new { @class = "control-label" })
+                                                    </div>
+                                                    <div class="col">
+                                                        @Html.EditorFor(model => model.show)
+                                                        @Html.ValidationMessageFor(model => model.show, "", new { @class = "text-danger" })
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col mt-4 p-4">
+                                        <div class="d-flex justify-content-end">
+                                            <div class="row">
+                                                <div class="mr-4">
+                                                    <input type="submit" value="Create" class="btn bg-primary" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+                @*for editing*@
+                else
+                {
+                    <h4><b>Updating Form</b></h4>
+                    using (Html.BeginForm("Edit", "School", new { id = Model.Id }, FormMethod.Post, htmlAttributes: new { @id = "edition_form" }))
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <div class="form">
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="row">
+                                                    @Html.LabelFor(model => model.school_name, "School", htmlAttributes: new { @class = "control-label" })
+                                                </div>
+                                                <div class="row p-2">
+                                                    @Html.EditorFor(model => model.school_name, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.school_name, "", new { @class = "text-danger" })
+                                                </div>
+
+                                            </div>
+                                            <div class="col-md-3 ">
+                                                <div class="row">
+                                                    @Html.LabelFor(model => model.class_name, "Class/Course Name", htmlAttributes: new { @class = "control-label" })
+                                                </div>
+                                                <div class="row p-2">
+                                                    @Html.EditorFor(model => model.class_name, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.class_name, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-3">
+                                                <div class="row">
+                                                    @Html.LabelFor(model => model.order_no, "Display Order No", htmlAttributes: new { @class = "control-label" })
+                                                </div>
+                                                <div class="row p-2">
+                                                    @Html.EditorFor(model => model.order_no, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.order_no, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="row">
+                                                    @Html.LabelFor(model => model.no_of_year, "No Of Year", htmlAttributes: new { @class = "control-label" })
+                                                </div>
+                                                <div class="row p-2">
+                                                    @Html.EditorFor(model => model.no_of_year, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.no_of_year, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 d-flex justify-content-start align-items-center ">
+                                                <div class="row mt-4">
+                                                    <div class="col">
+                                                        @Html.LabelFor(model => model.show, "Show On Website", htmlAttributes: new { @class = "control-label" })
+                                                    </div>
+                                                    <div class="col">
+                                                        @Html.EditorFor(model => model.show)
+                                                        @Html.ValidationMessageFor(model => model.show, "", new { @class = "text-danger" })
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col mt-4 p-4">
+                                    <div class="d-flex justify-content-end">
+                                        <div class="row">
+                                            <div class="col">
+                                                <div class="mr-4">
+                                                    <input type="submit" value="Update" class="btn btn-success" />
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <div class="mr-4">
+                                                    <input type="reset" id="reset_btn" value="Close" class="btn btn-danger" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+
+            </div>
+        </div>
+    </div>
+
+    <div class="col">
+        <div class="row">
+            <h4><b>List of registered classes</b></h4>
+            <hr style="height: 4px; border-width: 0; background-color: #0366fc " />
+            <div class="table-wrapper-scroll-y my-custom-scrollbar" style="height: 50vh; overflow: auto;">
+                <table class="table table-bordered table-striped mb-0">
+                    <thead>
+                        <tr >
+                            <th >Class Name</th>
+                            <th >Display Order No</th>
+                            <th>No Of Years</th>
+                            <th>Show On Website</th>
+                            <th class="text-center" colspan="2">Action</th>
+                        </tr>
+
+                    </thead>
+                    <tbody>
+                        @foreach (SchoolModel i in ViewData["data"] as List<SchoolModel>)
+                        {
+                            <tr>
+                                <td>@i.class_name</td>
+                                <td>@i.order_no</td>
+                                <td>@i.no_of_year</td>
+                                <td>@i.show</td>
+                                <td colspan="2">
+                                    <div class="row">
+                                        <div class="col d-flex justify-content-center ">
+                                            <a href=@Url.Action("Edit","School",new { id=i.Id}) class="btn btn-primary">Edit</a>
+                                        </div>
+                                        <div class="col">
+                                            <form class="delete_form">
+                                                <input value="@i.Id" style="display: none" />
+                                                <button class="btn btn-danger" id="delete_btn">Delete</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+            <div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/Content/Custom.js"></script>
