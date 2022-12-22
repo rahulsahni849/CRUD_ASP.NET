@@ -4,15 +4,14 @@ An Asp.net MVC application with all crud operations
 ## Screenshots of Application
 
 ### Creation and Listing view all together
-<img
-  src="https://github.com/rahulsahni849/CRUD_ASP.NET/blob/master/temp_images/creating.png"
-  alt="Alt text"
-  title="Optional title"
-  style="display: inline-block; margin: 0 auto;  max-width: 300px" />
+
+![creating](https://user-images.githubusercontent.com/96810668/209075372-3b8651da-856c-4a7e-be6e-092d1fc576c7.png)
+
+
+<br />
+<br />
+
 ### Updation and Listing view all together
-<img
-  src="https://github.com/rahulsahni849/CRUD_ASP.NET/blob/master/temp_images/updating.png"
-  alt="Alt text"
-  title="Optional title"
-  style="display: inline-block; margin: 0 auto;  max-width: 300px" />
+
+![updating](https://user-images.githubusercontent.com/96810668/209075382-fd839d03-b462-437d-b721-737dca722d98.png)
 
